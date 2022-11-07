@@ -4,15 +4,17 @@ This script allows to stake KSM via the Fireblocks system using the RAW signing 
 
 **Prerequisites:**
 
-1. Create the following vault accounts with KSM wallet within each:
+1. Run `npm i` from the project's directory to install all needed dependencies.
+
+2. Create the following vault accounts with KSM wallet within each:
 
     a. Stash Account - holds the amount to stake
 
     b. Controller Account - has the permissions to run nominations (should have balance of 25 KSM)
 
-2. Enable RAW signing feature by contacting Fireblocks's support team
+3. Enable RAW signing feature by contacting Fireblocks's support team
 
-3. Set transaction authorization policy rule that governs the RAW signing operation, the policy should include the following parameters:
+4. Set transaction authorization policy rule that governs the RAW signing operation, the policy should include the following parameters:
 
     a. Initiator
 
