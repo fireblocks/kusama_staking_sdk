@@ -8,7 +8,7 @@ import { assert, hexToU8a, u8aToHex } from "@polkadot/util";
 import { blake2AsHex } from '@polkadot/util-crypto';
 
 class FireblocksSigner implements Signer {
-    constructor(public fireblocks: FireblocksSDK, private vaultAccountId: string, private txNote?: string) {
+    constructor(public fireblocks: FireblocksSDK, private vaultAccountId: string, private txNote?: string, private testnet: boolean = false) {
     }
 
     public async signRaw({ data, type }: SignerPayloadRaw): Promise<SignerResult> {
@@ -32,7 +32,7 @@ class FireblocksSigner implements Signer {
                     type: PeerType.VAULT_ACCOUNT,
                     id: this.vaultAccountId
                 },
-                assetId: 'KSM',
+                assetId: this.testnet ? "WND" : 'KSM',
                 extraParameters: { rawMessageData },
                 note: this.txNote || ""
             }
@@ -56,13 +56,13 @@ class FireblocksSigner implements Signer {
     }
 }
 
-export async function sendTransaction(fireblocks: FireblocksSDK, account: string, blocks: number | undefined, endpoint: string, [txName, ...params]: string[], vaultAccountId, txNote): Promise<void> {
+export async function sendTransaction(fireblocks: FireblocksSDK, account: string, blocks: number | undefined, endpoint: string, [txName, ...params]: string[], vaultAccountId, txNote, testnet): Promise<void> {
     const api = await ApiPromise.create({ provider: new WsProvider(endpoint) });
 
     const [section, method] = txName.split('.');
     assert(api.tx[section] && api.tx[section][method], `Unable to find method ${section}.${method}`);
 
-    const options: Partial<SignerOptions> = { signer: new FireblocksSigner(fireblocks, vaultAccountId, txNote) };
+    const options: Partial<SignerOptions> = { signer: new FireblocksSigner(fireblocks, vaultAccountId, txNote, testnet) };
 
     if (blocks === 0) {
         // immortal extrinsic

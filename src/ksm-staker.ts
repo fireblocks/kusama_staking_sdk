@@ -21,7 +21,7 @@ export  class KSMStaker {
 
     async sendTransaction({ vaultAccountId, params, txNote}: {vaultAccountId: string, params: string[], txNote?: string}) {
         const permanentAddress = await this.getPermanentAddress(vaultAccountId);
-        return sendTransaction(this.apiClient, permanentAddress, 0, this.getEndpoint(), params , vaultAccountId, txNote);
+        return sendTransaction(this.apiClient, permanentAddress, 0, this.getEndpoint(), params , vaultAccountId, txNote, this.testnet);
     }
 
     async bond(vaultAccountId, amount?: number, controllerAddress?: string, rewardDestination?: string) {
