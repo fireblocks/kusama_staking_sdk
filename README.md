@@ -52,3 +52,8 @@ reward_destination - Can be one of the following:
 3. **28 days after** unbond() - withdrawUnbonded(<controller_account_vault_account_id>);
 
 4. **Optional** - removeProxy(<controller_account_vault_account_id>, <proxy_ksm_address>);
+
+**How to change controller**
+
+1. setCotroller(<vault_account_id>, <controller_address>)
+
