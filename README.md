@@ -49,7 +49,7 @@ reward_destination - Can be one of the following:
 
 2. unbond(<controller_account_vault_account_id>, <amount_to_unbond>);
 
-3. **28 days after** unbond() - withdrawUnbonded(<controller_account_vault_account_id>);
+3. **7 days after** unbond() - withdrawUnbonded(<controller_account_vault_account_id>);
 
 4. **Optional** - removeProxy(<controller_account_vault_account_id>, <proxy_ksm_address>);
 
