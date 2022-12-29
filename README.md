@@ -55,5 +55,5 @@ reward_destination - Can be one of the following:
 
 **How to change controller**
 
-1. setController(<vault_account_id>, <controller_address>)
+1. setController(<stash_vault_account_id>, <controller_address>)
 
