@@ -70,5 +70,9 @@ export  class KSMStaker {
     async withdrawUnbonded(vaultAccountId) {
         await this.sendTransaction({params: ['staking.withdrawUnbonded', null], vaultAccountId, txNote: `Withdrawing Unbonded Funds`});
     }
+
+    async setController(vaultAccountId, controllerAddress){
+        await this.sendTransaction({params: ['staking.setController', controllerAddress], vaultAccountId, txNote: `Setting ${controllerAddress} as contoller`})
+    }
 }
 

@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",                     
+    "noImplicitThis": false,               
+    "noImplicitAny": false,
+    "esModuleInterop": true,                 
+    "skipLibCheck": true,                     
+    "forceConsistentCasingInFileNames": true ,
+    "resolveJsonModule": true 
+  }
+}
+
