@@ -72,7 +72,7 @@ export  class KSMStaker {
     }
 
     async setController(vaultAccountId, controllerAddress){
-        await this.sendTransaction({params: ['staking.setController', controllerAddress], vaultAccountId, txNote: `Setting ${controllerAddress} as contoller`})
+        await this.sendTransaction({params: ['staking.setController', controllerAddress], vaultAccountId, txNote: `Setting ${controllerAddress} as controller`})
     }
 }
 
