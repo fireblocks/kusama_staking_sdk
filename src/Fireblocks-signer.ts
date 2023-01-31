@@ -72,6 +72,7 @@ export async function sendTransaction(fireblocks: FireblocksSDK, account: string
         const signedBlock = await api.rpc.chain.getBlock();
 
         options.blockHash = signedBlock.block.header.hash;
+        // @ts-ignore
         options.era = api.createType('ExtrinsicEra', {
             current: signedBlock.block.header.number,
             period: blocks
