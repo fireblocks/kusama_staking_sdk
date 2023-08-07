@@ -12,7 +12,7 @@ As a result the following breaking changes were introduced:
 
 1. Run `npm i` from the project's directory to install all needed dependencies.
 
-2. Create the following vault accounts with KSM wallet which will act as a stash and controller Account
+2. Create a vault account with KSM wallet which will act as a stash and controller account
 
 3. Enable RAW signing feature by contacting Fireblocks's support team
 
