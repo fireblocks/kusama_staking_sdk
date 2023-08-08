@@ -1,6 +1,6 @@
 {
   "name": "ksm_staking",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "FB KSM Staking",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@polkadot/api": "6.3.1",
+    "@polkadot/api": "^10.9.1",
     "fireblocks-sdk": ">=1.7.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",

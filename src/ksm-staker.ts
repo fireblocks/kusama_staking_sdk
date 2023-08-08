@@ -28,23 +28,22 @@ export  class KSMStaker {
      * Bond an amount of KSM from the stash to the controller
      * @param vaultAccountId - Stash vault account ID
      * @param amount - the amount to bond
-     * @param controllerAddress - the controller's address
      * @param rewardDestination - rewards destination (Stash, Staked or Controller)
      */
 
-    async bond(vaultAccountId, amount?: number, controllerAddress?: string, rewardDestination?: string) {
+    async bond(vaultAccountId, amount?: number, rewardDestination?: string) {
         if(!amount) {
             const availableBalance = (await this.apiClient.getVaultAccountAsset(vaultAccountId, this.getAssetId())).available;
             amount = Number.parseFloat(availableBalance);
         } 
 
-        const txNote = controllerAddress ? `Bond ${amount} KSM to ${controllerAddress}` : `Bond ${amount} KSM`;
+        const txNote = `Bond ${amount} KSM`;
         console.log(txNote);
 
         await this.sendTransaction({
             vaultAccountId,
             params: [
-                'staking.bond', controllerAddress || await this.getPermanentAddress(vaultAccountId),
+                'staking.bond',
                 (amount * 1000000000000).toString(),
                 rewardDestination? rewardDestination: 'Stash'
             ],
@@ -120,8 +119,8 @@ export  class KSMStaker {
      * @param controllerAddress - new controller address
      */
     
-    async setController(vaultAccountId, controllerAddress){
-        await this.sendTransaction({params: ['staking.setController', controllerAddress], vaultAccountId, txNote: `Setting ${controllerAddress} as controller`})
+    async setController(vaultAccountId){
+        throw new Error("setController is no longer supported in DOT / KSM / WND, for more information see README.md")
     }
 }
 
