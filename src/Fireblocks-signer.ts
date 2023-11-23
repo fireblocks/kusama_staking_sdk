@@ -50,6 +50,7 @@ class FireblocksSigner implements Signer {
                 const signature = '0x00' + signedTx[0].signature.fullSig;
                 console.log('Signature: ' + signature);
 
+                //@ts-ignore
                 resolve({ id: 1, signature });
             }
         });
