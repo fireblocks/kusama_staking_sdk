@@ -119,7 +119,7 @@ export  class KSMStaker {
      */
     
     async setController(vaultAccountId){
-        await this.sendTransaction({params: ['staking.setController'], vaultAccountId, txNote: `Migration controller back to stash vault`})
+        await this.sendTransaction({params: ['staking.setController'], vaultAccountId, txNote: `Migrate controller back to stash vault`})
     }
 }
 
