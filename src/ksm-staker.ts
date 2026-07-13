@@ -10,7 +10,7 @@ export  class KSMStaker {
     }
 
     getEndpoint() {
-        return this.testnet ? 'wss://westend-rpc.polkadot.io/' : 'wss://kusama-rpc.polkadot.io';
+        return this.testnet ? 'wss://westend-rpc.polkadot.io/' : 'wss://kusama-asset-hub-rpc.polkadot.io';
     }
 
     async getPermanentAddress(vaultAccountId) {
@@ -71,7 +71,7 @@ export  class KSMStaker {
      * @param amount - amount to unbond
      */
 
-    async unbond(vaultAccountId, amount?: number) {
+    async unbond(vaultAccountId, amount: number) {
         await this.sendTransaction({params: ['staking.unbond',(amount * 1000000000000).toString()], vaultAccountId, txNote: `Unbonding ${amount} KSM`});
     }
     
@@ -91,7 +91,7 @@ export  class KSMStaker {
      */
 
     async chill(vaultAccountId) {
-        await this.sendTransaction({params: ['staking.chill'], vaultAccountId, txNote: `Chilling the controller account`});
+        await this.sendTransaction({params: ['staking.chill'], vaultAccountId, txNote: `Chilling the stash account`});
     }
 
     /**
@@ -114,13 +114,12 @@ export  class KSMStaker {
     }
 
     /**
-     * Change the controller account
+     * Migrates the controller account back to the Stash account. Required once before `chill()`ing if `setController()` was previously used to set a different controller.
      * @param vaultAccountId - stash vault account id
-     * @param controllerAddress - new controller address
      */
     
     async setController(vaultAccountId){
-        throw new Error("setController is no longer supported in DOT / KSM / WND, for more information see README.md")
+        await this.sendTransaction({params: ['staking.setController'], vaultAccountId, txNote: `Migrate controller back to stash vault`})
     }
 }
 
